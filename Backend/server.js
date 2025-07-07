@@ -10,14 +10,7 @@ dotenv.config()
 
 app.use(body_parser.json())
 
-if (process.env.mode === 'production') {
-    app.use(cors())
-} else {
-    app.use(cors({
-        origin: ["http://localhost:5173", "http://localhost:3001", "http://localhost:3000", "https://ted-news-web.onrender.com", "https://tednews-live.onrender.com"]
-    }))
-}
-
+app.use(cors())
 
 app.use('/', require('./routes/authRoutes'))
 app.use('/', require('./routes/newsRoute'))
